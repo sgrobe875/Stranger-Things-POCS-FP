@@ -224,9 +224,10 @@ for char in characters:
 
 # Plot all results
 for char in characters:
+    name = char[0].upper() + char[1:]
     plt.plot(x, results[char]['power']['values'], alpha=0.8, color='lightblue')
     plt.plot(x, results[char]['danger']['values'], alpha=0.8, color='orange')
-    title = 'Power and Danger Across the Series for ' + char
+    title = 'Power and Danger Across the Series for ' + name
     plt.title(title)
     plt.legend(['Power','Danger'])
     plt.show()
@@ -249,9 +250,10 @@ for char in characters:
 
 # Plot all results
 for char in characters:
+    name = char[0].upper() + char[1:]
     plt.plot(x, results[char]['power']['values'], alpha=0.8, color='lightblue')
     plt.plot(x, results[char]['danger']['values'], alpha=0.8, color='orange')
-    title = 'Power and Danger Across the Series for ' + char
+    title = 'Power and Danger Across the Series for ' + name
     plt.title(title)
     plt.legend(['Power','Danger'])
     plt.show()
