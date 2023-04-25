@@ -24,8 +24,6 @@ with open('data/one_grams_clean_full.txt') as f:
 
 
 
-
-
 #### taken & modified from assignment 20 ####
 
 # takes in a list, returns the average of the values in the list

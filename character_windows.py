@@ -210,12 +210,13 @@ def sliding_window_character(char_name,
 
 characters = ['mike','will','lucas','dustin','eleven',
               'steve','hopper','joyce','nancy','jonathan',
-              'max','robin','brenner','vecna']
+              'max','robin','brenner','murray','demogorgon']
+
 
 results = {}
 
 for char in characters:
-    x, values_dict = sliding_window_character(char_name=char, z=3.5)
+    x, values_dict = sliding_window_character(char_name=char, z=3)
     results[char] = values_dict
     e = datetime.datetime.now()
     print("Completed", char, "at %s:%s:%s" % (e.hour, e.minute, e.second))
@@ -233,34 +234,60 @@ for char in characters:
     plt.show()
     
     
-with open("data/char_results_z3.5.json", "w") as f:
+with open("data/char_results_z3.json", "w") as f:
     json.dump(results,f)
     
-    
-    
-results = {}
 
-for char in characters:
-    x, values_dict = sliding_window_character(char_name=char, z=4)
-    results[char] = values_dict
-    e = datetime.datetime.now()
-    print("Completed", char, "at %s:%s:%s" % (e.hour, e.minute, e.second))
+
+# results = {}
+
+# for char in characters:
+#     x, values_dict = sliding_window_character(char_name=char, z=3.5)
+#     results[char] = values_dict
+#     e = datetime.datetime.now()
+#     print("Completed", char, "at %s:%s:%s" % (e.hour, e.minute, e.second))
     
     
 
-# Plot all results
-for char in characters:
-    name = char[0].upper() + char[1:]
-    plt.plot(x, results[char]['power']['values'], alpha=0.8, color='lightblue')
-    plt.plot(x, results[char]['danger']['values'], alpha=0.8, color='orange')
-    title = 'Power and Danger Across the Series for ' + name
-    plt.title(title)
-    plt.legend(['Power','Danger'])
-    plt.show()
+# # Plot all results
+# for char in characters:
+#     name = char[0].upper() + char[1:]
+#     plt.plot(x, results[char]['power']['values'], alpha=0.8, color='lightblue')
+#     plt.plot(x, results[char]['danger']['values'], alpha=0.8, color='orange')
+#     title = 'Power and Danger Across the Series for ' + name
+#     plt.title(title)
+#     plt.legend(['Power','Danger'])
+#     plt.show()
     
     
-with open("data/char_results_z4.json", "w") as f:
-    json.dump(results,f)
+# with open("data/char_results_z3.5.json", "w") as f:
+#     json.dump(results,f)
+    
+    
+    
+# results = {}
+
+# for char in characters:
+#     x, values_dict = sliding_window_character(char_name=char, z=4)
+#     results[char] = values_dict
+#     e = datetime.datetime.now()
+#     print("Completed", char, "at %s:%s:%s" % (e.hour, e.minute, e.second))
+    
+    
+
+# # Plot all results
+# for char in characters:
+#     name = char[0].upper() + char[1:]
+#     plt.plot(x, results[char]['power']['values'], alpha=0.8, color='lightblue')
+#     plt.plot(x, results[char]['danger']['values'], alpha=0.8, color='orange')
+#     title = 'Power and Danger Across the Series for ' + name
+#     plt.title(title)
+#     plt.legend(['Power','Danger'])
+#     plt.show()
+    
+    
+# with open("data/char_results_z4.json", "w") as f:
+#     json.dump(results,f)
 
 
     
