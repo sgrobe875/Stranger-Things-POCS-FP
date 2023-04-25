@@ -187,5 +187,9 @@ with open("data/values_dict_z3.5.json", "w") as f:
 
 
 
+# Word shifts: based on heat map, season 3 seems the least "dangerous" of the 4 seasons; perhaps
+# make a word shift to see if any reasons for that emerge
+#     --> from watching the show, we know season 3 had an overall very different tone from the
+#         others, particularly season 4, so see if that is reflected in the word shift
 
 
