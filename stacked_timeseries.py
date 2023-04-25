@@ -64,6 +64,7 @@ plt.title('Power and Danger Across "Stranger Things"', fontsize=32, pad=20)
 plt.legend(['Power','Danger'], prop={'size': 20}, loc='center right')
 plt.xlabel('Word number i')
 plt.ylabel('Score')
+plt.savefig("figures/series_z3.5.png",bbox_inches='tight')
 plt.show()
 
 # now add in the vertical lines at season ends
@@ -76,6 +77,7 @@ plt.vlines(season_ends, ymin=-0.15, ymax=0.05, linestyles='dashed',color='red')
 plt.legend(['Power','Danger','Season End'], prop={'size': 20}, loc='center right')
 plt.xlabel('Word number i')
 plt.ylabel('Score')
+plt.savefig("figures/series_z3.5_vl.png",bbox_inches='tight')
 plt.show()
 
 
@@ -93,6 +95,7 @@ plt.title('Power and Danger Across "Stranger Things"', fontsize=32, pad=20)
 plt.legend(['Power','Danger'], prop={'size': 20}, loc='center right')
 plt.xlabel('Word number i')
 plt.ylabel('Score')
+plt.savefig("figures/series_z4.png",bbox_inches='tight')
 plt.show()
 
 # now add in the vertical lines at season ends
@@ -105,6 +108,7 @@ plt.vlines(season_ends, ymin=-0.15, ymax=0.05, linestyles='dashed',color='red')
 plt.legend(['Power','Danger','Season End'], prop={'size': 20}, loc='center right')
 plt.xlabel('Word number i')
 plt.ylabel('Score')
+plt.savefig("figures/series_z4_vl.png",bbox_inches='tight')
 plt.show()
 
 
@@ -177,6 +181,8 @@ fig.legend(['Power','Danger','Season End'], prop={'size': 20}, loc='center left'
 
     
 fig.tight_layout(h_pad=1)
+
+plt.savefig("figures/main_characters.png",bbox_inches='tight')
     
 plt.show()
 
@@ -273,9 +279,165 @@ fig.legend(['Power','Danger'], prop={'size': 20}, loc='center left', bbox_to_anc
 
     
 fig.tight_layout(h_pad=1)
+
+plt.savefig("figures/stacked_seasons.png",bbox_inches='tight')
     
 plt.show()
 
+
+
+
+
+
+##### stacked plot of 5 secondary characters ###########################################################
+
+x = make_x_list(3)
+
+# build the figure of 5 plots of main characters
+gs = gridspec.GridSpec(5,1)
+fig = plt.figure(figsize=(14, 28))
+
+xlab = 'Word number i'
+ylab = 'Score'
+
+fig.suptitle("Power and Danger for Specific Characters\n", fontsize=36)
+
+plt.rcParams.update({'font.size': 18}) 
+
+# first plot
+ax = fig.add_subplot(gs[0])
+ax.plot(x, char_results['steve']['power']['values'], alpha=0.8, color='lightblue')
+ax.plot(x, char_results['steve']['danger']['values'], alpha=0.8, color='orange')
+ax.set_xlabel(xlab)
+ax.set_ylabel(ylab)
+ax.vlines(season_ends, ymin=-0.17, ymax=0.1, linestyles='dashed',color='red')
+ax.set_title('Steve')
+
+# second plot
+ax = fig.add_subplot(gs[1])
+ax.plot(x, char_results['nancy']['power']['values'], alpha=0.8, color='lightblue')
+ax.plot(x, char_results['nancy']['danger']['values'], alpha=0.8, color='orange')
+ax.set_xlabel(xlab)
+ax.set_ylabel(ylab)
+ax.vlines(season_ends, ymin=-0.17, ymax=0.1, linestyles='dashed',color='red')
+ax.set_title('Nancy')
+
+# third plot
+ax = fig.add_subplot(gs[2])
+ax.plot(x, char_results['jonathan']['power']['values'], alpha=0.8, color='lightblue')
+ax.plot(x, char_results['jonathan']['danger']['values'], alpha=0.8, color='orange')
+ax.set_xlabel(xlab)
+ax.set_ylabel(ylab)
+ax.vlines(season_ends, ymin=-0.17, ymax=0.1, linestyles='dashed',color='red')
+ax.set_title('Jonathan')
+
+# fourth plot
+ax = fig.add_subplot(gs[3])
+ax.plot(x, char_results['hopper']['power']['values'], alpha=0.8, color='lightblue')
+ax.plot(x, char_results['hopper']['danger']['values'], alpha=0.8, color='orange')
+ax.set_xlabel(xlab)
+ax.set_ylabel(ylab)
+ax.vlines(season_ends, ymin=-0.17, ymax=0.1, linestyles='dashed',color='red')
+ax.set_title('Hopper')
+
+# fifth plot
+ax = fig.add_subplot(gs[4])
+ax.plot(x, char_results['joyce']['power']['values'], alpha=0.8, color='lightblue')
+ax.plot(x, char_results['joyce']['danger']['values'], alpha=0.8, color='orange')
+ax.set_xlabel(xlab)
+ax.set_ylabel(ylab)
+ax.vlines(season_ends, ymin=-0.17, ymax=0.1, linestyles='dashed',color='red')
+ax.set_title('Joyce')
+
+
+fig.legend(['Power','Danger','Season End'], prop={'size': 20}, loc='center left', bbox_to_anchor=(1, 0.5))
+
+    
+fig.tight_layout(h_pad=1)
+
+plt.savefig("figures/secondary_characters.png",bbox_inches='tight')
+    
+plt.show()
+
+
+
+
+##### stacked plot of 5 tertiary characters ###########################################################
+
+# characters in this group played a big role in the plot, but did not appear in all 4 seasons
+
+x = make_x_list(3)
+
+# build the figure of 5 plots of main characters
+gs = gridspec.GridSpec(5,1)
+fig = plt.figure(figsize=(14, 28))
+
+xlab = 'Word number i'
+ylab = 'Score'
+
+fig.suptitle("Power and Danger for Specific Characters\n", fontsize=36)
+
+plt.rcParams.update({'font.size': 18}) 
+
+# first plot
+ax = fig.add_subplot(gs[0])
+ax.plot(x, char_results['max']['power']['values'], alpha=0.8, color='lightblue')
+ax.plot(x, char_results['max']['danger']['values'], alpha=0.8, color='orange')
+ax.set_xlabel(xlab)
+ax.set_ylabel(ylab)
+ax.set_xlim(0,179482)
+ax.vlines(season_ends, ymin=-0.17, ymax=0.1, linestyles='dashed',color='red')
+ax.set_title('Max')
+
+# second plot
+ax = fig.add_subplot(gs[1])
+ax.plot(x, char_results['robin']['power']['values'], alpha=0.8, color='lightblue')
+ax.plot(x, char_results['robin']['danger']['values'], alpha=0.8, color='orange')
+ax.set_xlabel(xlab)
+ax.set_ylabel(ylab)
+ax.set_xlim(0,179482)
+ax.vlines(season_ends, ymin=-0.17, ymax=0.1, linestyles='dashed',color='red')
+ax.set_title('Robin')
+
+# third plot
+ax = fig.add_subplot(gs[2])
+ax.plot(x, char_results['murray']['power']['values'], alpha=0.8, color='lightblue')
+ax.plot(x, char_results['murray']['danger']['values'], alpha=0.8, color='orange')
+ax.set_xlabel(xlab)
+ax.set_ylabel(ylab)
+ax.set_xlim(0,179482)
+ax.vlines(season_ends, ymin=-0.17, ymax=0.1, linestyles='dashed',color='red')
+ax.set_title('Murray')
+
+# fourth plot
+ax = fig.add_subplot(gs[3])
+ax.plot(x, char_results['demogorgon']['power']['values'], alpha=0.8, color='lightblue')
+ax.plot(x, char_results['demogorgon']['danger']['values'], alpha=0.8, color='orange')
+ax.set_xlabel(xlab)
+ax.set_ylabel(ylab)
+ax.set_xlim(0,179482)
+ax.vlines(season_ends, ymin=-0.17, ymax=0.1, linestyles='dashed',color='red')
+ax.set_title('The Demogorgon')
+
+# fifth plot
+ax = fig.add_subplot(gs[4])
+ax.plot(x, char_results['brenner']['power']['values'], alpha=0.8, color='lightblue')
+ax.plot(x, char_results['brenner']['danger']['values'], alpha=0.8, color='orange')
+ax.set_xlabel(xlab)
+ax.set_ylabel(ylab)
+ax.set_xlim(0,179482)
+ax.vlines(season_ends, ymin=-0.17, ymax=0.1, linestyles='dashed',color='red')
+ax.set_title('Dr. Brenner')
+
+
+fig.legend(['Power','Danger','Season End'], prop={'size': 20}, loc='center left', bbox_to_anchor=(1, 0.5))
+
+    
+fig.tight_layout(h_pad=1)
+
+plt.savefig("figures/tertiary_characters.png",bbox_inches='tight')
+    
+plt.show()
 
 
 

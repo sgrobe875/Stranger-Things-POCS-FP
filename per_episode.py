@@ -149,6 +149,7 @@ danger_df.index = [1,2,3,4,5,6,7,8,9]
 
 
 ### Build heatmap from results ###
+
 fig, ax = plt.subplots(figsize=(10,15))
 sns.heatmap(power_df, cmap="magma")
 ax.set_xlabel("Season", size=16)
@@ -157,6 +158,7 @@ ax.set_ylabel("Episode\n", size=16)
 plt.title("Stranger Things Power by Episode\n", size=24)
 ax.tick_params(axis='both', which='major', labelsize=10, labelbottom = False, bottom=False, 
                top = False, labeltop=True)
+plt.savefig("figures/power_per_episode.png",bbox_inches='tight')
 
 
 
@@ -168,6 +170,7 @@ ax.set_ylabel("Episode\n", size=16)
 plt.title("Stranger Things Danger by Episode\n", size=24)
 ax.tick_params(axis='both', which='major', labelsize=10, labelbottom = False, bottom=False, 
                top = False, labeltop=True)
+plt.savefig("figures/danger_per_episode.png",bbox_inches='tight')
 
 
 
