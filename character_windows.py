@@ -24,13 +24,6 @@ with open('data/one_grams_clean_full_prepro.txt') as f:
     prepro = f.readlines()
     
 
-# prepro = prepro[:10000]
-
-# for debugging purposes, only work with a subset of the data
-# data = data[:1000]
-
-
-
 
 
 #### taken & modified from assignment 20 ####
@@ -211,7 +204,7 @@ def sliding_window_character(char_name,
 characters = ['mike','will','lucas','dustin','eleven',
               'steve','hopper','joyce','nancy','jonathan',
               'max','robin','brenner','murray','demogorgon']
-
+ 
 
 results = {}
 
