@@ -131,6 +131,15 @@ build_freq_df <- function(corpus_df) {
 }
 
 
+# same as above, but case sensitive
+build_freq_df_sensitive <- function(corpus_df) {
+  freq_df <- data.frame(table(corpus_df))
+  names(freq_df) <- c('word','freq')
+  
+  return(freq_df)
+}
+
+
 
 
 
@@ -138,17 +147,51 @@ build_freq_df <- function(corpus_df) {
 # read in one-grams
 st_text <- read.csv('data/one_grams_clean_full.txt', header=FALSE)
 
+
+### Case insensitive ###
+
 # get frequencies of words
 freq_df <- build_freq_df(st_text)
 # build plot using the frequencies
-calc_and_plot_Zipf(freq_df, 'freq', ' for Stranger Things')
+calc_and_plot_Zipf(freq_df, 'freq', ' for Stranger Things (Case Insensitive)')
 
 # get the rank data
-t <- calc_Zipf(freq_df, 'freq')
+t1 <- calc_Zipf(freq_df, 'freq')
 # build linear model
-model <- lm(data = t, log10(freq) ~ log10(rank))
+model <- lm(data = t1, log10(freq) ~ log10(rank))
 model$coefficients[2]
 # plot with linear model
-plot_Zipf_with_linreg(t, 'freq', ' for Stranger Things with Linear Regression')
+plot_Zipf_with_linreg(t1, 'freq', ' for Stranger Things (Case Insensitive) with Linear Regression')
 
+
+# 25 most used words
+head(t1, 25)
+
+
+### Case sensitive ###
+
+# get frequencies of words
+freq_df_sensitive <- build_freq_df_sensitive(st_text)
+# build plot using the frequencies
+calc_and_plot_Zipf(freq_df_sensitive, 'freq', ' for Stranger Things (Case Sensitive)')
+
+# get the rank data
+t2 <- calc_Zipf(freq_df_sensitive, 'freq')
+# build linear model
+model <- lm(data = t2, log10(freq) ~ log10(rank))
+model$coefficients[2]
+# plot with linear model
+plot_Zipf_with_linreg(t2, 'freq', ' for Stranger Things (Case Sensitive) with Linear Regression')
+
+
+# 25 most used words
+head(t2, 25)
+
+
+
+
+
+# write to files
+write.csv(t1, "data/case_insensitive_zipf.csv")
+write.csv(t2, "data/case_sensitive_zipf.csv")
 
