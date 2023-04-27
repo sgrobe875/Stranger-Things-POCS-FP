@@ -347,3 +347,91 @@ sentiment_shift.get_shift_graph(system_names = ['Season 2', 'Season 4'],
 # overall they're very similar, season 4 just has harsher language
 
 
+
+
+
+
+
+
+
+# Throw in a proportion shift or two because why not:
+    
+# Season 3 vs. All others
+
+s3_words = full_text[72010:113105]
+for i in range(len(s3_words)):
+    s3_words[i] = s3_words[i].lower().rstrip('\n')
+        
+while '' in s3_words:
+    s3_words.remove('')
+
+s124_words = full_text[:72010] + full_text[113105:]
+for i in range(len(s124_words)):
+    s124_words[i] = s124_words[i].lower().rstrip('\n')
+
+while '' in s124_words:
+    s124_words.remove('')
+
+
+s3freqs, s124freqs = prep_corpus(s3_words, s124_words)
+
+proportion_shift = sh.ProportionShift(type2freq_1=s124freqs,
+                                      type2freq_2=s3freqs)
+proportion_shift.get_shift_graph(system_names = ['Seasons 1, 2, and 4', 'Season 3'],
+                                 title='Proportion Shift of Season 3 vs. All Other Seasons')
+
+
+
+# try again and remove names
+names = ['will','lucas','dustin','nancy','mike','max','eleven','jonathan','mom',
+         'joyce','steve','chrissy','billy','angela','papa','hopper','el','robin']
+
+for name in names:
+    while name in s3_words:
+        s3_words.remove(name)
+    
+    while name in s124_words:
+        s124_words.remove(name)
+        
+
+s3freqs, s124freqs = prep_corpus(s3_words, s124_words)
+
+proportion_shift = sh.ProportionShift(type2freq_1=s124freqs,
+                                      type2freq_2=s3freqs)
+proportion_shift.get_shift_graph(system_names = ['Seasons 1, 2, and 4', 'Season 3'],
+                                 title='Proportion Shift of Season 3 vs. All Other Seasons\nIgnoring Names')
+
+
+
+
+# Season 1 + 3 vs. Season 2 + 4
+
+proportion_shift = sh.ProportionShift(type2freq_1=s13freqs,
+                                      type2freq_2=s24freqs)
+proportion_shift.get_shift_graph(system_names = ['Seasons 1 and 3', 'Seasons 2 and 4'],
+                                 title='Proportion Shift of Seasons 1 and 3 vs. Seasons 2 and 4')
+
+
+
+# Not much of anything interesting in these
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
