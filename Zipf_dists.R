@@ -195,3 +195,17 @@ head(t2, 25)
 write.csv(t1, "data/case_insensitive_zipf.csv")
 write.csv(t2, "data/case_sensitive_zipf.csv")
 
+
+
+t1 <- read.csv("data/case_insensitive_zipf.csv")
+t2 <- read.csv("data/case_sensitive_zipf.csv")
+
+
+
+
+
+
+# rebuild and write files for building the ousiogram
+ousio_data <- data.frame('ngram'=t1$word, 'count'=t1$freq)
+write.csv(ousio_data, 'data/corpus_data.csv')
+

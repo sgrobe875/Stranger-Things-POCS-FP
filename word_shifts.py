@@ -422,16 +422,3 @@ proportion_shift.get_shift_graph(system_names = ['Seasons 1 and 3', 'Seasons 2 a
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
